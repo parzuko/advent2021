@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "advent of code but i(TS)",
   "scripts": {
-    "watch":"tsc -w",
-    "start": "node dist/day0.js"
+    "watch": "tsc -w",
+    "start": "node dist/day1.js"
   },
   "repository": "https://github.com/parzuko/advent2021.git",
   "author": "Jivansh Sharma <jivansh17@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^16.11.11",
     "typescript": "^4.5.2"
   }
 }
