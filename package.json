@@ -4,7 +4,7 @@
   "description": "advent of code but i(TS)",
   "scripts": {
     "watch": "tsc -w",
-    "start": "node dist/day1.js"
+    "start": "node dist/day2.js"
   },
   "repository": "https://github.com/parzuko/advent2021.git",
   "author": "Jivansh Sharma <jivansh17@gmail.com>",
