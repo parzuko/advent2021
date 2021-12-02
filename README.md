@@ -8,5 +8,5 @@ I have the `tsc` compiler installed as a dev dependancy; To setup this repositor
 ```bash
 yarn # or npm i 
 yarn watch # to begin compiling code
-yarn start # to run compiled js file
+DAY=<day_number> yarn start # to run compiled js file
 ```
