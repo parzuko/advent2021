@@ -85,4 +85,43 @@ const solvePart1 = (luckyNumbers: number[], newBoards: number[][]) => {
     return -1;
 };
 
+const getLoserAndNumber = (
+    luckyNumbers: number[],
+    newBoards: number[][]
+): any[] => {
+    for (let currentNumber of luckyNumbers) {
+        for (let index = 0; index < newBoards.length; index++) {
+            for (let i = 0; i < newBoards[index].length; i++) {
+                if (newBoards[index][i] === currentNumber) {
+                    newBoards[index][i] = -1;
+                }
+                if (doesBoardWin(newBoards[index])) {
+                    if (newBoards.length === 1) {
+                        return [currentNumber, newBoards[0]];
+                    }
+                    newBoards.splice(index, 1);
+                    index -= 1;
+                    break;
+                }
+            }
+        }
+    }
+    return [0, newBoards[0]];
+};
+
+const solvePart2 = (luckyNumbers: number[], newBoards: number[][]) => {
+    const answer = getLoserAndNumber(luckyNumbers, newBoards);
+    const lastNumber: number = answer[0];
+    const board: number[] = answer[1];
+
+    let remSum = 0;
+    for (let num in board) {
+        if (board[num] !== -1) {
+            remSum += board[num];
+        }
+    }
+    return remSum * lastNumber;
+};
+
 console.log(solvePart1(luckyNumbers, newBoards));
+console.log(solvePart2(luckyNumbers, newBoards));
