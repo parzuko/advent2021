@@ -50,6 +50,21 @@ for (const part of parts) {
             const oldOverlap: any = cordinateCount.get(currCorString) ?? 0;
             cordinateCount.set(currCorString, oldOverlap + 1);
         }
+    } // Part 2
+    else {
+        const steps = Math.abs(endCor.x - startCor.x);
+        const xDir = endCor.x - startCor.x > 0 ? 1 : -1;
+        const yDir = endCor.y - startCor.y > 0 ? 1 : -1;
+
+        for (let i = 0; i <= steps; i++) {
+            const currCor: Cordinate = {
+                x: startCor.x + xDir * i,
+                y: startCor.y + yDir * i,
+            };
+            const currCorString = `${currCor.x}, ${currCor.y}`;
+            const oldOverlap: any = cordinateCount.get(currCorString) ?? 0;
+            cordinateCount.set(currCorString, oldOverlap + 1);
+        }
     }
 }
 
