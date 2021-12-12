@@ -29,5 +29,35 @@ const solvePart1 = (fishLives: number[]): number => {
     }
     return newFishLives.length;
 };
+const solvePart2 = (fishLives: number[]): number => {
+    let fish: number[] = fishLives;
+    const lanternfishSchool: any = {};
+    for (let i = 0; i < 9; i++) {
+        lanternfishSchool[i] = 0;
+    }
+    fish.forEach(fishTimer => {
+        lanternfishSchool[fishTimer]++;
+    });
 
-console.log(solvePart1(fishLives));
+    return numberAfterDays(lanternfishSchool, 256);
+};
+
+function grow(schoolObj: any) {
+    const tempZero = schoolObj[0];
+    for (let i = 0; i < 8; i++) {
+        schoolObj[i] = schoolObj[i + 1];
+    }
+    schoolObj[8] = tempZero;
+    schoolObj[6] += tempZero;
+}
+function numberAfterDays(schoolObj: any, days: any): any {
+    const schoolCopy = { ...schoolObj };
+    for (let i = 0; i < days; i++) {
+        grow(schoolCopy);
+    }
+    return Object.values(schoolCopy).reduce(
+        (accu: any, curr: any) => accu + curr
+    );
+}
+// console.log(solvePart1(fishLives));
+console.log(solvePart2(fishLives));
